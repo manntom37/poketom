@@ -5,15 +5,15 @@ import { getIndivData, getPokemon, searchPokemon } from "../../Utils/api";
 import Navbar from "../Navbar/Navbar";
 import Pagination from "../Pagination/Pagination";
 import "./Homepage.css";
-import loading from "../../images/loading.gif";
 import { FaRegHeart } from "react-icons/fa";
+import LoadingScreen from "../LoadingScreen/LoadingScreen";
 
 const Homepage = () => {
   const [pokemon, setPokemon] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(
-    "https://pokeapi.co/api/v2/pokemon"
+    "https://pokeapi.co/api/v2/pokemon?limit=24"
   );
   const [nextPage, setNextPage] = useState("");
   const [prevPage, setPrevPage] = useState("");
@@ -47,18 +47,11 @@ const Homepage = () => {
   }
 
   if (isLoading) {
-    return (
-      <>
-        <Navbar></Navbar>
-        <div className="loadingscreen">
-          <img src={loading}></img>
-        </div>
-      </>
-    );
+    return <LoadingScreen />;
   } else
     return (
       <>
-        <Navbar />
+        
         <div className="search">
           <form>
             <input

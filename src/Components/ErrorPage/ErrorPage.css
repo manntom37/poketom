@@ -1,0 +1,35 @@
+.error-page {
+  display: flex;
+  margin: 2rem;
+  margin-bottom: 0rem;
+  align-items: center;
+  height: 70vh;
+}
+
+.error-msg {
+  font-weight: bolder;
+  font-size: xx-large;
+}
+
+.error-img {
+  transform: scale(0.5);
+}
+
+button {
+  height: 50px;
+  width: 200px;
+  border: 2px solid tomato;
+  background-color: tomato;
+  border-radius: 25px;
+  color: white;
+  font-size: large;
+  font-family: "Zilla Slab", serif;
+  font-weight: bolder;
+}
+
+button:hover {
+  cursor: pointer;
+  border: 2px solid tomato;
+  color: tomato;
+  background-color: white;
+}

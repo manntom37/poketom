@@ -64,13 +64,6 @@ ul {
   width: 70px;
 }
 
-.loadingscreen {
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  height: 90vh;
-  display: flex;
-}
 
 .favourite {
   display: flex;

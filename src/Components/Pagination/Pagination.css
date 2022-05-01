@@ -1,12 +1,6 @@
 .prevnextbuttons {
-  border: 2px solid black;
-  border-radius: 25px;
   height: 50px;
   width: 75px;
   margin: 10px;
   /* position:fixed; */
-}
-
-.prevnextbuttons:hover {
-    cursor: pointer;
 }
