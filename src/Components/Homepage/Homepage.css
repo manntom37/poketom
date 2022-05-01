@@ -1,0 +1,54 @@
+li {
+  list-style: none;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.pokecard {
+  border: 2px solid grey;
+  height: 30vh;
+  width: 25vw;
+  margin: 10px;
+  border-radius: 25px;
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+.pokecard:hover {
+  transform: scale(1.05);
+}
+
+.homepage {
+  margin: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.search {
+  margin-top: 1rem;
+}
+
+.searchinput {
+  width: 25vw;
+  height: 5vh;
+  border: 2px solid black;
+  border-radius: 25px;
+  font-size: larger;
+  text-align: center;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 90vw;
+  max-width: 90vw;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+  justify-content: center;
+}
