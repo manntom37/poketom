@@ -2,9 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getIndivData, getPokemon } from "../../Utils/api";
-import Navbar from "../Navbar /Navbar";
+import Navbar from "../Navbar/Navbar";
 import Pagination from "../Pagination/Pagination";
 import "./Homepage.css";
+import loading from "../../images/loading.gif";
 
 const Homepage = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -73,6 +74,7 @@ const Homepage = () => {
           goToPrevPage={goToPrevPage}
         ></Pagination>
       </div>
+      <img src={loading}></img>
     </>
   );
 };

@@ -1,0 +1,4 @@
+.prevnextbuttons {
+  display: flex;
+  flex-direction: column;
+}

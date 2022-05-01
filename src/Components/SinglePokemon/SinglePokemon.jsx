@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getIndivData } from "../../Utils/api";
-import Navbar from "../Navbar /Navbar";
+import Navbar from "../Navbar/Navbar";
 
 const SinglePokemon = () => {
   const { name } = useParams();
