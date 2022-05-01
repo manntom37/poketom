@@ -1,17 +1,21 @@
 import React from "react";
 import "./Navbar.css";
 import poketom from "../../images/poketomlogo.png";
-import favourites from "../../images/pokefave.png";
+import { FaHeart } from "react-icons/fa";
+import { RiSwordLine } from "react-icons/ri";
 
 const Navbar = () => {
   return (
     <div className="navbar">
       <div className="navbar-left">
-        <img src={poketom}></img>
+        <img src={poketom} className="logo"></img>
       </div>
-      <div className="navbar-mid"></div>
+      <div className="navbar-mid">
+        {" "}
+        <RiSwordLine />{" "}
+      </div>
       <div className="navbar-right">
-        <img src={favourites}></img>
+        <FaHeart />
       </div>
     </div>
   );

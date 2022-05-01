@@ -51,7 +51,6 @@ const Homepage = () => {
   } else
     return (
       <>
-        
         <div className="search">
           <form>
             <input

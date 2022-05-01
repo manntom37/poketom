@@ -40,10 +40,12 @@ a {
 .searchinput {
   width: 25vw;
   height: 5vh;
-  border: 2px solid black;
+  border: 2px solid grey;
   border-radius: 25px;
   font-size: larger;
   text-align: center;
+  font-family: "Zilla Slab", serif;
+  font-weight: bolder;
 }
 
 ul {
@@ -63,7 +65,6 @@ ul {
   height: 70px;
   width: 70px;
 }
-
 
 .favourite {
   display: flex;
