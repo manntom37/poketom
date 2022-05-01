@@ -1,11 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getIndivData, getPokemon } from "../../Utils/api";
+import { getIndivData, getPokemon, searchPokemon } from "../../Utils/api";
 import Navbar from "../Navbar/Navbar";
 import Pagination from "../Pagination/Pagination";
 import "./Homepage.css";
 import loading from "../../images/loading.gif";
+import { FaRegHeart } from "react-icons/fa";
 
 const Homepage = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -16,6 +17,7 @@ const Homepage = () => {
   );
   const [nextPage, setNextPage] = useState("");
   const [prevPage, setPrevPage] = useState("");
+  const [allPokemon, setAllPokemon] = useState([]);
 
   let handleSubmit = (event) => {
     event.preventDefault();
@@ -25,7 +27,7 @@ const Homepage = () => {
   };
 
   useEffect(() => {
-    getPokemon().then((res) => {
+    getPokemon(currentPage).then((res) => {
       setIsLoading(false);
       setNextPage(res.data.next);
       setPrevPage(res.data.previous);
@@ -33,50 +35,100 @@ const Homepage = () => {
     });
   }, [currentPage]);
 
+  searchPokemon().then((res) => {
+    setAllPokemon(res.data.results);
+  });
+
   function goToNextPage() {
     setCurrentPage(nextPage);
   }
   function goToPrevPage() {
     setCurrentPage(prevPage);
   }
-  return (
-    <>
-      <Navbar />
-      <div className="search">
-        <form className="searchform">
-          <input
-            className="searchinput"
-            placeholder="Search for a pokemon..."
-            onChange={handleSubmit}
-          ></input>
-        </form>
-      </div>
-      <div className="homepage">
-        <ul>
-          {pokemon.map((pokemons) => {
-            if (pokemons.name.toLowerCase().includes(search.toLowerCase()))
-              return (
-                <Link key={pokemons.name} to={`/pokemon/${pokemons.name}`}>
-                  <div className="pokecard">
-                    <li key={pokemons.name}>
-                      <h2 key={pokemons.name}>
-                        {pokemons.name[0].toUpperCase() +
-                          pokemons.name.slice(1)}
-                      </h2>
-                    </li>
-                  </div>
-                </Link>
-              );
-          })}
-        </ul>
-        <Pagination
-          goToNextPage={goToNextPage}
-          goToPrevPage={goToPrevPage}
-        ></Pagination>
-      </div>
-      <img src={loading}></img>
-    </>
-  );
+
+  if (isLoading) {
+    return (
+      <>
+        <Navbar></Navbar>
+        <div className="loadingscreen">
+          <img src={loading}></img>
+        </div>
+      </>
+    );
+  } else
+    return (
+      <>
+        <Navbar />
+        <div className="search">
+          <form>
+            <input
+              className="searchinput"
+              placeholder="Search for a pokemon..."
+              onChange={handleSubmit}
+            ></input>
+          </form>
+        </div>
+        <div className="homepage">
+          {search === "" && (
+            <ul>
+              {pokemon.map((pokemons) => {
+                return (
+                  <Link key={pokemons.name} to={`/pokemon/${pokemons.name}`}>
+                    <div className="pokecard">
+                      <li key={pokemons.name}>
+                        <h2 key={pokemons.name} className="pokemon-name">
+                          {pokemons.name[0].toUpperCase() +
+                            pokemons.name.slice(1)}
+                        </h2>
+                        <img
+                          className="pokeimage"
+                          src={`https://img.pokemondb.net/artwork/large/${pokemons.name}.jpg`}
+                        ></img>
+                        <div className="favourite">
+                          <FaRegHeart />
+                        </div>
+                      </li>
+                    </div>
+                  </Link>
+                );
+              })}
+            </ul>
+          )}
+
+          {search !== "" && (
+            <ul>
+              {allPokemon.map((pokemons) => {
+                if (pokemons.name.toLowerCase().includes(search.toLowerCase()))
+                  return (
+                    <Link key={pokemons.name} to={`/pokemon/${pokemons.name}`}>
+                      <div className="pokecard">
+                        <li key={pokemons.name}>
+                          <h2 key={pokemons.name}>
+                            {pokemons.name[0].toUpperCase() +
+                              pokemons.name.slice(1)}
+                          </h2>
+                          <img
+                            className="pokeimage"
+                            src={`https://img.pokemondb.net/artwork/large/${pokemons.name}.jpg`}
+                          ></img>
+                          <div className="favourite">
+                            <FaRegHeart />
+                          </div>
+                        </li>
+                      </div>
+                    </Link>
+                  );
+              })}
+            </ul>
+          )}
+
+          <Pagination
+            goToNextPage={goToNextPage}
+            goToPrevPage={goToPrevPage}
+          ></Pagination>
+        </div>
+      </>
+    );
 };
 
 export default Homepage;

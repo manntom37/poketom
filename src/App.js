@@ -9,7 +9,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="pokemon/:id" element={<SinglePokemon />} />
+          <Route path="pokemon/:name" element={<SinglePokemon />} />
         </Routes>
       </div>
     </BrowserRouter>
