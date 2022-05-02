@@ -2,7 +2,6 @@ import React from "react";
 import "./Navbar.css";
 import poketom from "../../images/poketomlogo.png";
 import { FaHeart } from "react-icons/fa";
-import { RiSwordLine } from "react-icons/ri";
 
 const Navbar = () => {
   return (
@@ -12,7 +11,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-mid">
         {" "}
-        <RiSwordLine />{" "}
+
       </div>
       <div className="navbar-right">
         <FaHeart />

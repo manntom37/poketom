@@ -5,6 +5,7 @@ import { getIndivData } from "../../Utils/api";
 import Navbar from "../Navbar/Navbar";
 import "./SinglePokemon.css";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
+import Compare from "../Compare/Compare";
 
 const SinglePokemon = () => {
   const { name } = useParams();
@@ -12,6 +13,13 @@ const SinglePokemon = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [types, setTypes] = useState([]);
   const [stats, setStats] = useState([]);
+  const [showCompare, setShowCompare] = useState(false);
+
+  const showComparison = () => {
+    if (showCompare) {
+      return setShowCompare(false);
+    } else setShowCompare(true);
+  };
 
   const backgroundColour = () => {
     let color = "";
@@ -64,55 +72,64 @@ const SinglePokemon = () => {
   } else
     return (
       <>
-        <div className="indiv-pokecard">
-          <div className="title">
-            <h1 className="indiv-pokename">
-              {onePokemon.name[0].toUpperCase() + onePokemon.name.slice(1)}
-            </h1>
-            <h2 className="indiv-pokeHP">
-              {onePokemon.stats[0].stat.name.toUpperCase()}{" "}
-              {onePokemon.stats[0].base_stat}
-            </h2>
-          </div>
+        <div className="whole-page">
+          <div className="indiv-pokecard">
+            <div className="title">
+              <h1 className="indiv-pokename">
+                {onePokemon.name[0].toUpperCase() + onePokemon.name.slice(1)}
+              </h1>
+              <h2 className="indiv-pokeHP">
+                {onePokemon.stats[0].stat.name.toUpperCase()}{" "}
+                {onePokemon.stats[0].base_stat}
+              </h2>
+            </div>
 
-          <div
-            className="image-div"
-            style={{ "background-color": backgroundColour() }}
-          >
-            <img
-              src={onePokemon.sprites.front_default}
-              className="indiv-pic"
-            ></img>
+            <div
+              className="image-div"
+              style={{ "background-color": backgroundColour() }}
+            >
+              <img
+                src={onePokemon.sprites.front_default}
+                className="indiv-pic"
+              ></img>
+            </div>
+            <div className="id-height-weight">
+              ID: {onePokemon.id} | Height: {onePokemon.height} | Weight:{" "}
+              {onePokemon.weight}
+            </div>
+            <div className="typesList">
+              <span style={{ "font-weight": "bold" }}>Type:</span>
+              {types.map((pokeTypes) => {
+                return (
+                  <li key={pokeTypes.type.name}>
+                    {pokeTypes.type.name[0].toUpperCase() +
+                      pokeTypes.type.name.slice(1)}
+                  </li>
+                );
+              })}
+            </div>
+            <div className="stats">
+              <span style={{ "font-weight": "bold" }}>Stats: </span>
+              {stats.map((stat) => {
+                return (
+                  <li key={stat.stat.name}>
+                    <span className="statName">
+                      {stat.stat.name[0].toUpperCase() +
+                        stat.stat.name.slice(1)}{" "}
+                      :{" "}
+                    </span>
+                    <span className="statFigure"> {stat.base_stat}</span>
+                  </li>
+                );
+              })}
+            </div>
           </div>
-          <div className="id-height-weight">
-            ID: {onePokemon.id} | Height: {onePokemon.height} | Weight:{" "}
-            {onePokemon.weight}
-          </div>
-          <div className="typesList">
-            <span style={{ "font-weight": "bold" }}>Type:</span>
-            {types.map((pokeTypes) => {
-              return (
-                <li key={pokeTypes.type.name}>
-                  {pokeTypes.type.name[0].toUpperCase() +
-                    pokeTypes.type.name.slice(1)}
-                </li>
-              );
-            })}
-          </div>
-          <div className="stats">
-            <span style={{ "font-weight": "bold" }}>Stats: </span>
-            {stats.map((stat) => {
-              return (
-                <li key={stat.stat.name}>
-                  <span className="statName">
-                    {stat.stat.name[0].toUpperCase() + stat.stat.name.slice(1)}{" "}
-                    :{" "}
-                  </span>
-                  <span className="statFigure"> {stat.base_stat}</span>
-                </li>
-              );
-            })}
-          </div>
+          {showCompare ? <Compare /> : null}
+        </div>
+        <div className="button-div">
+          <button onClick={showComparison} className="compare-button">
+            Compare Me!
+          </button>
         </div>
       </>
     );
