@@ -1,14 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "./Compare.css";
-import { getIndivData, getPokemon, searchPokemon } from "../../Utils/api";
+import { getIndivData, searchPokemon } from "../../Utils/api";
+import PokemonCard from "../SinglePokemon/PokemonCard";
 
 const Compare = () => {
-  const [pokemon, setPokemon] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+    
   const [allPokemon, setAllPokemon] = useState([]);
   const [search, setSearch] = useState("");
-  const [comparisonPoke, setComparisonPoke] = useState("");
+  const [comparisonPokemon, setComparisonPokemon] = useState("");
   const [compariStats, setCompariStats] = useState({});
   const [types, setTypes] = useState([]);
   const [stats, setStats] = useState([]);
@@ -20,17 +20,20 @@ const Compare = () => {
     }, 500);
   };
 
-  searchPokemon().then((res) => {
-    setAllPokemon(res.data.results);
-  });
-
   useEffect(() => {
-    getIndivData(comparisonPoke).then((res) => {
+    searchPokemon().then((res) => {
+      setAllPokemon(res.data.results);
+    });
+  }, []);
+
+  const setComparison = (name) => {
+    getIndivData(name).then((res) => {
       setCompariStats(res);
       setTypes(res.types);
       setStats(res.stats.slice(1));
+      setComparisonPokemon(name);
     });
-  }, [comparisonPoke]);
+  };
 
   return (
     <>
@@ -55,7 +58,7 @@ const Compare = () => {
                       <h2
                         key={pokemons.name}
                         className="comparison-pokename"
-                        onClick={() => setComparisonPoke(pokemons.name)}
+                        onClick={() => setComparison(pokemons.name)}
                       >
                         {pokemons.name[0].toUpperCase() +
                           pokemons.name.slice(1)}
@@ -67,19 +70,8 @@ const Compare = () => {
           })}
         </ul>
       </div>
-      {comparisonPoke === "" && null}
-      {comparisonPoke !== "" && (
-        <div className="whole-page">
-          <div className="indiv-pokecard">
-            <div className="title">
-              <h1 className="indiv-pokename">
-                {compariStats.name}
-                {console.log(compariStats)}
-              </h1>
-            </div>
-          </div>
-        </div>
-      )}
+      {comparisonPokemon === "" && null}
+      {comparisonPokemon !== "" && <PokemonCard name={comparisonPokemon} />}
     </>
   );
 };

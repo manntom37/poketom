@@ -20,6 +20,8 @@ a {
   display: flex;
   align-content: center;
   font-size: 10px;
+  overflow: hidden;
+
 }
 
 .pokecard:hover {
@@ -76,4 +78,15 @@ ul {
   transform: scale(2.5);
   padding: 5px;
   margin-top: 3px;
+}
+
+@media screen and (max-width: 480px) {
+  .pokecard {
+    height: 20vh;
+    width: 30vw;
+    margin: 3px;
+  }
+  .searchinput {
+    width: 60vw;
+  }
 }

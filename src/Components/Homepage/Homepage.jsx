@@ -1,8 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { getIndivData, getPokemon, searchPokemon } from "../../Utils/api";
-import Navbar from "../Navbar/Navbar";
+import { Link } from "react-router-dom";
+import { getPokemon, searchPokemon } from "../../Utils/api";
 import Pagination from "../Pagination/Pagination";
 import "./Homepage.css";
 import { FaRegHeart } from "react-icons/fa";

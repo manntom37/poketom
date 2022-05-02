@@ -27,9 +27,15 @@
 }
 
 .navbar-right {
-  width: 33vw;
-  transform: scale(1.2);
+  width: 32vw;
+  transform: scale(0.5);
   display: flex;
   justify-content: center;
-  margin: auto;
+  justify-content: flex-end;
+}
+
+.pokeheart {
+display: flex;
+  margin-top: -0.4rem;
+
 }

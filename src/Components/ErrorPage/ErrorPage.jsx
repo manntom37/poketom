@@ -1,5 +1,4 @@
 import React from "react";
-import errorgif from "../../images/errorPage.gif";
 import error from "../../images/error.png";
 import "./ErrorPage.css";
 import { Link } from "react-router-dom";
