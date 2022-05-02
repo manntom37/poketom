@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
+import Favourites from "./Components/Favourites/Favourites";
 import Homepage from "./Components/Homepage/Homepage";
 import Navbar from "./Components/Navbar/Navbar";
 import SinglePokemon from "./Components/SinglePokemon/SinglePokemon";
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="pokemon/:name" element={<SinglePokemon />} />
+          <Route path="/favourites" element={<Favourites />} />
           <Route path="/*" element={<ErrorPage />} />
         </Routes>
       </div>

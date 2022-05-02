@@ -17,7 +17,7 @@ const Navbar = () => {
 
         <div className="navbar-mid"> </div>
         <div className="navbar-right">
-          <Link to={"/"}>
+          <Link to={"/favourites"}>
             {" "}
             <img src={pokeheart} className="pokeheart"></img>
           </Link>

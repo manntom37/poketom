@@ -10,7 +10,7 @@ a {
 
 .pokecard {
   border: 2px solid grey;
-  height: 20vh;
+  height: 17vh;
   width: 10vw;
   margin: 10px;
   border-radius: 25px;
@@ -21,7 +21,6 @@ a {
   align-content: center;
   font-size: 10px;
   overflow: hidden;
-
 }
 
 .pokecard:hover {
@@ -69,15 +68,22 @@ ul {
   border-radius: 25px;
 }
 
-.favourite {
+.card-and-fave {
   display: flex;
-  justify-content: center;
-  align-content: center;
+  flex-direction: column;
   align-items: center;
-  text-align: right;
-  transform: scale(2.5);
-  padding: 5px;
-  margin-top: 3px;
+}
+
+.favourite {
+  width: 30px;
+}
+
+.favourite:hover {
+  cursor: pointer;
+}
+
+.pokemon-name {
+  margin-top: 10px;
 }
 
 @media screen and (max-width: 480px) {

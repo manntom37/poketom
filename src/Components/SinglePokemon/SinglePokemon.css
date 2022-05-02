@@ -1,6 +1,6 @@
 .whole-page {
   display: flex;
-  /* flex-direction: row; */
+  /* flex-direction: column; */
   flex-wrap: wrap;
 }
 
@@ -24,11 +24,12 @@
 
 .indiv-pokecard {
   display: flex;
+  flex-direction: column;
   width: 22vw;
   height: 65vh;
   margin: auto;
   margin-top: 3rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   flex-direction: column;
   border: 8px solid yellow;
   outline: 1px solid black;
@@ -59,15 +60,20 @@
   margin-bottom: 15px;
 }
 
-.compare-button {
-  position: absolute;
-}
-
 .button-div {
   margin-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.fave {
+  /* display: flex; */
+  transform: scale(1.2);
+}
+
+.fave:hover {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 480px) {
