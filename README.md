@@ -16,16 +16,16 @@ Runs the app in the development mode on localhost:3000.
 
 ### `Planning`
 
-To begin, I wireframed a quick design using Excalidraw, this is available to see at : . I found this extremely helpful as it let me think about where every component needed to be, and why. Once I was happy with my basic wireframe, I turned to npx create-react-app and got going!
+To begin, I wireframed a quick design using Excalidraw. I found this extremely helpful as it let me think about where every component needed to be, and why. Once I was happy with my basic wireframe, I turned to npx create-react-app and got going!
 
 I wanted the app to fit in with its content, and went for quite a cartoonish and colourful look. For the individual Pokemon pages, I tried to recreate a (simplified) version of a Pokemon trading card.
 
 ### `Frameworks`
 
 I chose to use React for this project for a number of reasons.
-Firstly, I'm a huge fan!
+Firstly, I'm a big fan!
 
-From a CSS point of view, I decided not to use any frameworks like Bootstrap as I wanted to challenge myself to use my CSS skills, but I can understand why you may use CSS frameworks for different projects!
+From a CSS point of view, I decided not to use any frameworks like Bootstrap as I wanted to challenge myself to use my raw CSS skills, but I can understand why you may use CSS frameworks for different projects!
 
 ## Challenges
 

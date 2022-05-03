@@ -21,7 +21,10 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-mid">
-          <Toggle />
+          <div className="toggle-nav">
+            {" "}
+            <Toggle />
+          </div>
         </div>
         <div className="navbar-right">
           <Link to={"/favourites"}>

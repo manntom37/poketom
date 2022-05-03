@@ -35,7 +35,12 @@
 }
 
 .pokeheart {
-display: flex;
+  display: flex;
   margin-top: -0.4rem;
+}
 
+@media screen and (max-width: 480px) {
+  .toggle-nav {
+    display: none;
+  }
 }

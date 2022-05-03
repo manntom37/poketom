@@ -80,5 +80,6 @@
   .indiv-pokecard {
     width: 70vw;
     height: 55vh;
+    overflow: hidden;
   }
 }
