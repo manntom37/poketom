@@ -1,6 +1,6 @@
 # Welcome to PokéTom!
 
-This is my web UI that interfaces with the PokeAPI Restful API. I have had some previous experience with using Axios and interacting with APIs, and this was a great challenge to refresh my memory!
+This is my web UI that interfaces with the PokeAPI Restful API. I have had some previous experience with using Axios and interacting with APIs, and this was a great challenge to refresh my memory! Link to hosted version : https://poketom.herokuapp.com/
 
 ## To start
 
