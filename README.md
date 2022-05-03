@@ -37,12 +37,15 @@ I had some trouble trying to access image data for the homepage, as this wasn't 
 
 ## Extra Features
 
-I implemented a dark mode as this is a feature I often find myself using on other sites.
+I implemented a dark(ish) mode as this is a feature I often find myself using on other sites.
 
 ## If I had more time...
 
-I'd love to explore the compare functionality a bit further, possibly mimicking a Top Trump style game - which card has the highest attack / defense / speed / etc of the two cards selected - possibly a button for 'Initiate Fight!' or something similar. For the individual card pages, I'd love to further style the Pokemon card to look more like an actual Pokemon trading card.
+If I had more time I'd definitely further refactor my code, making as much use of reusable components as possible. For example, the homepage is a mess, sorry for that! I'd love to refactor and possibly make the homepage pokemon cards their own reusable component (in fact I will do this after sending this code to be reviewed as it's bugging me!).
 
-For the homepage, being able to search by type of pokemon would also be handy.
+I think it'd be fun to explore the compare functionality a bit further, possibly mimicking a Top Trump style game - which card has the highest attack / defense / speed / etc of the two cards selected - possibly a button for 'Initiate Fight!' or something similar. For the individual card pages, I'd love to further style the Pokemon card to look more like an actual Pokemon trading card.
 
-I'd love to further refactor my code, making as much use of reusable components and CSS styles as possible.
+I wish I could have spent more time on responsive design and making the site look great on mobile.
+
+I think adding extra interactivity would make the site nicer too, small animations like when favouriting a pokemon could appear similarly to the Twitter animation when favouriting a tweet.
+

@@ -6,11 +6,13 @@ import Pagination from "../Pagination/Pagination";
 import "./Homepage.css";
 import { FaRegHeart } from "react-icons/fa";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
+import { ThemeContext } from "../../Context";
+import { useContext } from "react";
 let pokeArray = [];
 
 const Homepage = () => {
-  const [pokemon, setPokemon] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [pokemon, setPokemon] = useState([]);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(
     "https://pokeapi.co/api/v2/pokemon?limit=24"
@@ -18,10 +20,10 @@ const Homepage = () => {
   const [nextPage, setNextPage] = useState("");
   const [prevPage, setPrevPage] = useState("");
   const [allPokemon, setAllPokemon] = useState([]);
-  const [favourite, setFavourite] = useState([]);
-  const favouriteStorage = localStorage.getItem("favourites");
+  const theme = useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
 
-  let handleSubmit = (event) => {
+  let handleSearch = (event) => {
     event.preventDefault();
     setTimeout(() => {
       setSearch(event.target.value);
@@ -30,6 +32,7 @@ const Homepage = () => {
 
   useEffect(() => {
     getPokemon(currentPage).then((res) => {
+      // API call which gets pokemon from the current page.
       setIsLoading(false);
       setNextPage(res.data.next);
       setPrevPage(res.data.previous);
@@ -38,6 +41,7 @@ const Homepage = () => {
   }, [currentPage]);
 
   searchPokemon().then((res) => {
+    // API call to search through all pokemon.
     setAllPokemon(res.data.results);
   });
 
@@ -58,7 +62,7 @@ const Homepage = () => {
             <input
               className="searchinput"
               placeholder="Search for a pokemon..."
-              onChange={handleSubmit}
+              onChange={handleSearch}
             ></input>
           </form>
         </div>
@@ -82,22 +86,25 @@ const Homepage = () => {
                             <img
                               className="pokeimage"
                               src={`https://img.pokemondb.net/artwork/large/${pokemons.name}.jpg`}
+                              alt={`An image of ${pokemons.name}`}
                             ></img>
                           </li>
                         </div>
                       </Link>
-                      <div className="favourite">
+                      <div
+                        className="favourite"
+                        style={{
+                          color: darkMode ? "white" : "black",
+                        }}
+                      >
                         <FaRegHeart
                           className="heart-button"
                           onClick={() => {
-                            setFavourite(pokemons.name);
                             pokeArray.push(pokemons.name);
-                            console.log(pokeArray);
                             localStorage.setItem(
                               "favourites",
                               JSON.stringify(pokeArray)
                             );
-                            console.log(favouriteStorage);
                           }}
                         />
                       </div>
@@ -128,17 +135,21 @@ const Homepage = () => {
                               <img
                                 className="pokeimage"
                                 src={`https://img.pokemondb.net/artwork/large/${pokemons.name}.jpg`}
+                                alt={`An image of ${pokemons.name}`}
                               ></img>
                             </li>
                           </div>
-                        </Link>{" "}
-                        <div className="favourite">
+                        </Link>
+                        <div
+                          className="favourite"
+                          style={{
+                            color: darkMode ? "white" : "black",
+                          }}
+                        >
                           <FaRegHeart
                             className="heart-button"
                             onClick={() => {
-                              setFavourite(pokemons.name);
                               pokeArray.push(pokemons.name);
-                              console.log(pokeArray);
                               localStorage.setItem(
                                 "favourites",
                                 JSON.stringify(pokeArray)

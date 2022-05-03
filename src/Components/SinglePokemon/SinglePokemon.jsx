@@ -16,6 +16,7 @@ const SinglePokemon = () => {
   const [showCompare, setShowCompare] = useState(false);
 
   const showComparison = () => {
+    // On click of 'compare me!' button, new search card is shown
     if (showCompare) {
       return setShowCompare(false);
     } else setShowCompare(true);
@@ -23,6 +24,7 @@ const SinglePokemon = () => {
 
   useEffect(() => {
     getIndivData(name).then((res) => {
+      // API call, gets name from params.
       setIsLoading(false);
       setOnePokemon(res);
       setTypes(res.types);
@@ -35,8 +37,8 @@ const SinglePokemon = () => {
   } else
     return (
       <>
-        <div className="whole-page">
-          <PokemonCard name={onePokemon.name} />{" "}
+        <div className="card-view">
+          <PokemonCard name={onePokemon.name} />
           {showCompare ? <Compare /> : null}
         </div>
 

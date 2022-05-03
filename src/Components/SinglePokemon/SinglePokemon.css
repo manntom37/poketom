@@ -1,4 +1,4 @@
-.whole-page {
+.card-view {
   display: flex;
   /* flex-direction: column; */
   flex-wrap: wrap;

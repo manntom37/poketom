@@ -4,6 +4,7 @@ import { getIndivData } from "../../Utils/api";
 import "./SinglePokemon.css";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 
+// Reusable component for individual pokemon cards
 const PokemonCard = ({ name }) => {
   const [onePokemon, setOnePokemon] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -11,6 +12,7 @@ const PokemonCard = ({ name }) => {
   const [stats, setStats] = useState([]);
 
   const backgroundColour = () => {
+    // Changes the background color of each pokemon depending on their type
     let color = "";
     if (types[0].type.name === "bug" || types[0].type.name === "ground") {
       color = "#9A8275";
@@ -50,6 +52,7 @@ const PokemonCard = ({ name }) => {
   };
 
   useEffect(() => {
+    // API call to get the specific pokemon
     getIndivData(name).then((res) => {
       setIsLoading(false);
       setOnePokemon(res);
@@ -81,6 +84,7 @@ const PokemonCard = ({ name }) => {
             <img
               src={onePokemon.sprites.front_default}
               className="indiv-pic"
+              alt={`An image of the pokemon ${onePokemon.name}`}
             ></img>
           </div>
           <div className="id-height-weight">
