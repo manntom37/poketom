@@ -8,10 +8,10 @@ import { FaRegHeart } from "react-icons/fa";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import { ThemeContext } from "../../Context";
 import { useContext } from "react";
-let pokeArray = [];
 
 const Homepage = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [pokeArray, setPokeArray] = useState([]);
   const [pokemon, setPokemon] = useState([]);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(
@@ -69,24 +69,20 @@ const Homepage = () => {
         <div className="homepage">
           {search === "" && (
             <ul>
-              {pokemon.map((pokemons) => {
+              {pokemon.map((poke) => {
                 return (
                   <>
                     <div className="card-and-fave">
-                      <Link
-                        key={pokemons.name}
-                        to={`/pokemon/${pokemons.name}`}
-                      >
+                      <Link to={`/pokemon/${poke.name}`}>
                         <div className="pokecard">
-                          <li key={pokemons.name}>
-                            <h2 key={pokemons.name} className="pokemon-name">
-                              {pokemons.name[0].toUpperCase() +
-                                pokemons.name.slice(1)}
+                          <li key={poke.name}>
+                            <h2 className="pokemon-name">
+                              {poke.name[0].toUpperCase() + poke.name.slice(1)}
                             </h2>
                             <img
                               className="pokeimage"
-                              src={`https://img.pokemondb.net/artwork/large/${pokemons.name}.jpg`}
-                              alt={`An image of ${pokemons.name}`}
+                              src={`https://img.pokemondb.net/artwork/large/${poke.name}.jpg`}
+                              alt={`An image of ${poke.name}`}
                             ></img>
                           </li>
                         </div>
@@ -100,7 +96,7 @@ const Homepage = () => {
                         <FaRegHeart
                           className="heart-button"
                           onClick={() => {
-                            pokeArray.push(pokemons.name);
+                            pokeArray.push(poke.name);
                             localStorage.setItem(
                               "favourites",
                               JSON.stringify(pokeArray)
@@ -117,25 +113,22 @@ const Homepage = () => {
 
           {search !== "" && (
             <ul>
-              {allPokemon.map((pokemons) => {
-                if (pokemons.name.toLowerCase().includes(search.toLowerCase()))
+              {allPokemon.map((poke) => {
+                if (poke.name.toLowerCase().includes(search.toLowerCase()))
                   return (
                     <>
                       <div className="card-and-fave">
-                        <Link
-                          key={pokemons.name}
-                          to={`/pokemon/${pokemons.name}`}
-                        >
+                        <Link to={`/pokemon/${poke.name}`}>
                           <div className="pokecard">
-                            <li key={pokemons.name}>
-                              <h2 key={pokemons.name}>
-                                {pokemons.name[0].toUpperCase() +
-                                  pokemons.name.slice(1)}
+                            <li>
+                              <h2>
+                                {poke.name[0].toUpperCase() +
+                                  poke.name.slice(1)}
                               </h2>
                               <img
                                 className="pokeimage"
-                                src={`https://img.pokemondb.net/artwork/large/${pokemons.name}.jpg`}
-                                alt={`An image of ${pokemons.name}`}
+                                src={`https://img.pokemondb.net/artwork/large/${poke.name}.jpg`}
+                                alt={`An image of ${poke.name}`}
                               ></img>
                             </li>
                           </div>
@@ -149,7 +142,7 @@ const Homepage = () => {
                           <FaRegHeart
                             className="heart-button"
                             onClick={() => {
-                              pokeArray.push(pokemons.name);
+                              pokeArray.push(poke.name);
                               localStorage.setItem(
                                 "favourites",
                                 JSON.stringify(pokeArray)

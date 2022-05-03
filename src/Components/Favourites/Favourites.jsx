@@ -6,6 +6,7 @@ import { useContext } from "react";
 const Favourites = () => {
   const theme = useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
+  
   const yourFavourites = localStorage.getItem("favourites");
   const parsedFavourites = JSON.parse(yourFavourites);
 
