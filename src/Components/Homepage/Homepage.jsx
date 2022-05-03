@@ -74,8 +74,8 @@ const Homepage = () => {
                 return (
                   <>
                     <div className="card-and-fave">
-                      <div className="pokecard">
-                        <Link to={`/pokemon/${poke.name}`}>
+                      <Link to={`/pokemon/${poke.name}`}>
+                        <div className="pokecard">
                           <li key={poke.name}>
                             <h2 className="pokemon-name">
                               {poke.name[0].toUpperCase() + poke.name.slice(1)}
@@ -85,9 +85,9 @@ const Homepage = () => {
                               src={`https://img.pokemondb.net/artwork/large/${poke.name}.jpg`}
                               alt={`An image of ${poke.name}`}
                             ></img>
-                          </li>
-                        </Link>{" "}
-                      </div>
+                          </li>{" "}
+                        </div>{" "}
+                      </Link>
 
                       <div
                         className="favourite"
@@ -120,9 +120,10 @@ const Homepage = () => {
                   return (
                     <>
                       <div className="card-and-fave">
-                        <div className="pokecard">
+                        <Link to={`/pokemon/${poke.name}`}>
                           {" "}
-                          <Link to={`/pokemon/${poke.name}`}>
+                          <div className="pokecard">
+                            {" "}
                             <li>
                               <h2>
                                 {poke.name[0].toUpperCase() +
@@ -134,9 +135,8 @@ const Homepage = () => {
                                 alt={`An image of ${poke.name}`}
                               ></img>
                             </li>
-                          </Link>{" "}
-                        </div>
-
+                          </div>{" "}
+                        </Link>{" "}
                         <div
                           className="favourite"
                           style={{
