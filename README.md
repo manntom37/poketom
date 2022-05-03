@@ -31,7 +31,9 @@ From a CSS point of view, I decided not to use any frameworks like Bootstrap as 
 
 ## Challenges
 
-Before this test, I had no experience using localStorage. I had a few issues with this, especially making the favourited pokemon stay in the favourited section after a refresh! It was an interesting experience learning about this though, and although I did not get this to work how I'd eventually like, I'm still going to try and fix this.
+Before this test, I had no experience using localStorage. I had a few issues with this but it was an interesting experience learning about this. Although the favourite data persists on refresh, if I go back and add extra pokemon, the initial pokemon are removed from the favourites array. Although I did not get this and the favouriting to work how I'd eventually like, I'm still going to try and fix this.
+
+I was hoping that by favouriting a pokemon, I could fill in the heart to indicate it had been favourited, however I could only get this to work by every heart becoming filled in! Definitely something I'm going to work on.
 
 I had some trouble trying to access image data for the homepage, as this wasn't in the same part of the API as the initial call for the names. I fixed this (possibly a cheat way..sorry!) by getting my image for each pokemon from a site which I knew always ended its URL with the pokemons name:
 

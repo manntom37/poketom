@@ -33,6 +33,7 @@ const Homepage = () => {
   useEffect(() => {
     getPokemon(currentPage).then((res) => {
       // API call which gets pokemon from the current page.
+      // API I have created are in Utils/api.jsx
       setIsLoading(false);
       setNextPage(res.data.next);
       setPrevPage(res.data.previous);
@@ -73,8 +74,8 @@ const Homepage = () => {
                 return (
                   <>
                     <div className="card-and-fave">
-                      <Link to={`/pokemon/${poke.name}`}>
-                        <div className="pokecard">
+                      <div className="pokecard">
+                        <Link to={`/pokemon/${poke.name}`}>
                           <li key={poke.name}>
                             <h2 className="pokemon-name">
                               {poke.name[0].toUpperCase() + poke.name.slice(1)}
@@ -85,8 +86,9 @@ const Homepage = () => {
                               alt={`An image of ${poke.name}`}
                             ></img>
                           </li>
-                        </div>
-                      </Link>
+                        </Link>{" "}
+                      </div>
+
                       <div
                         className="favourite"
                         style={{
@@ -118,8 +120,9 @@ const Homepage = () => {
                   return (
                     <>
                       <div className="card-and-fave">
-                        <Link to={`/pokemon/${poke.name}`}>
-                          <div className="pokecard">
+                        <div className="pokecard">
+                          {" "}
+                          <Link to={`/pokemon/${poke.name}`}>
                             <li>
                               <h2>
                                 {poke.name[0].toUpperCase() +
@@ -131,8 +134,9 @@ const Homepage = () => {
                                 alt={`An image of ${poke.name}`}
                               ></img>
                             </li>
-                          </div>
-                        </Link>
+                          </Link>{" "}
+                        </div>
+
                         <div
                           className="favourite"
                           style={{

@@ -9,7 +9,9 @@ a {
 }
 
 .pokecard {
-  border: 2px solid grey;
+  /* border: 3px solid yellow;
+  outline: 1px solid black; */
+  border: 1px solid grey;
   height: 17vh;
   width: 10vw;
   margin: 10px;
